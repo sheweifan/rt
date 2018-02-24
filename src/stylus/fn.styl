@@ -1,0 +1,147 @@
+@import './var.styl'
+
+// 文字类
+ellipsis($w=auto)
+  width: $w
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
+  word-wrap: normal
+
+ellipsisLn($line)
+  overflow: hidden
+  text-overflow: ellipsis
+  display: -webkit-box
+  -webkit-box-orient: vertical
+  -webkit-line-clamp: $line
+
+textWrap()
+  word-wrap:break-word
+  word-break:break-all
+
+hyphens()
+  word-wrap:break-word
+  -webkit-hyphens:auto
+  hyphens:auto
+
+setFlexCenter()
+  display: flex
+  justify-content: center
+  align-items: center
+
+// icon
+setIcon()
+  display: inline-block
+  vertical-align: middle
+
+setRoundIcon()
+  width: 20px
+  height: 20px
+  border-radius: 50%
+
+// 边框
+sethalfborder($c=$borderColor)
+  content: " "
+  position: absolute
+  width: 200%
+  height: 200%
+  border:1px solid  $c
+  left:0
+  top:0
+  transform: scale(0.5) translate(-50%,-50%)
+  box-sizing: border-box;
+
+sethalfborderbottom($c=$borderColor)
+  content: " "
+  position: absolute
+  left: 0
+  bottom: 0
+  right: 0
+  height: 1px
+  border-bottom: 1px solid $c
+  color: $c
+  transform-origin: 0 100%
+  transform: scaleY(0.5)
+
+sethalfbordertop($c=$borderColor)
+  content: " "
+  position: absolute
+  left: 0
+  top: 0
+  right: 0
+  height: 1px
+  border-top: 1px solid $c
+  color: $c
+  transform-origin: 0 100%
+  transform: scaleY(0.5)
+
+sethalfborderleft($c=$borderColor)
+  content: " "
+  position: absolute
+  left: 0
+  top: 0
+  width: 1px
+  bottom: 0
+  border-left: 1px solid $c
+  color: $c
+  transform-origin: 0 0
+  transform: scaleX(0.5)
+
+sethalfborderright($c=$borderColor)
+  content: " "
+  position: absolute
+  right: 0
+  top: 0
+  width: 1px
+  bottom: 0
+  border-right: 1px solid $c
+  color: $c
+  transform-origin: 100% 0
+  transform: scaleX(0.5)
+
+// 表单
+setFormFont()
+  font-size: 12px
+  line-height: 25px
+  height: 25px
+
+fixed-page($hasHeader=false)
+  position: fixed
+  right: 0
+  top: $hasHeader ? 52px : 0
+  width: 100%
+  background: #fff
+  bottom: 0
+  overflow-x: hidden
+  overflow-y: auto
+  // z-index: 2
+  -webkit-overflow-scrolling: touch
+  // box-shadow: -5px 0 20px rgba(0,0,0,0.05)
+
+
+
+// 箭头
+_setArrow($arrowsize, $borderColor, $borderWidth)
+  display: inline-block
+  height: $arrowsize
+  width: $arrowsize
+  border-width: $borderWidth $borderWidth 0 0
+  border-color: $borderColor
+  border-style: solid
+
+setArrow($direction, $arrowsize, $borderColor, $borderWidth)
+  if $direction==top
+    _setArrow($arrowsize, $borderColor, $borderWidth)
+    transform: matrix(0.71,-0.71,0.71,0.71,0,0)
+  else if $direction==right
+    _setArrow($arrowsize, $borderColor, $borderWidth)
+    transform: matrix(0.71,0.71,-0.71,0.71,0,0)
+    position: relative
+  else if $direction==down
+    _setArrow($arrowsize, $borderColor, $borderWidth)
+    transform: matrix(-0.71,0.71,-0.71,-0.71,0,0)
+    position: relative
+  else if $direction==left
+    _setArrow($arrowsize, $borderColor, $borderWidth)
+    transform: matrix(-0.71,-0.71,0.71,-0.71,0,0)
+    position: relative

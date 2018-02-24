@@ -1,0 +1,110 @@
+@import '../../stylus/index.styl'
+
+.IndexContainer
+  height: 100%
+  overflow-y: auto
+  touch-action: pan-x pan-y
+  -webkit-overflow-scrolling: touch
+
+.indexGrid
+  background: #ffffff
+  display: flex
+
+.IndexBanner
+  height: (360 / 760 * 100)vw !important
+
+.indexGridItem
+  flex: 1
+  text-align: center
+  padding-bottom: 8px
+  .icon
+    width: 26px
+    height: 26px
+    margin: 8px 0 6px
+  .title
+    color: #999
+    font-size: 12px
+    line-height: 1.25
+
+.indexGridItem0 .icon
+  color: #52bdbd
+.indexGridItem1 .icon
+  color: #fead6b
+.indexGridItem2 .icon
+  color: #f784a5
+.indexGridItem3 .icon
+  color: #ceb559
+
+.indexProduct
+  background: #fff
+  border-radius: $radius
+
+.indexProductTop
+  display: flex
+  align-items: center
+  height: 40px
+  position: relative
+  &:before
+    sethalfborderbottom()
+  .tag
+    width: 22px
+    height: 22px
+    border-radius: 11px
+    margin: 0 8px 4px
+    background: $color
+    color: #ffffff
+    font-size: 14px
+    display: flex
+    justify-content: center
+    align-items: center
+  .title
+    flex: 1
+    font-size: 14px
+    line-height: 2
+    ellipsis()
+    color: #333
+  .tag2
+    margin: 0 4px
+    background: $color
+    color: #ffffff
+    font-size: 10px
+    line-height: 1.25
+    align-self: flex-start
+    padding: 0 6px
+
+.indexProductMiddle
+  width: 120px
+  height: 120px
+  background: #ffc600
+  border-radius: 60px
+  margin: 0 auto
+  display: flex
+  justify-content: center
+  align-items: center
+  flex-direction: column
+  position: relative
+  .percent
+    font-size: 30px
+    line-height: 2
+    color: $color
+  .title
+    font-size: 20px
+    line-height: 1
+    color: #fff
+  .rate
+    position: absolute
+    right: 0
+    top: 0
+    background: $color
+    padding: 5px 10px
+    color: #fff
+    font-size: 12px
+
+.indexProductBottom
+  display: flex
+  li
+    flex: 1
+    text-align: center
+    font-size: 14px
+    color: #999
+    line-height: 44px
