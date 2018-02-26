@@ -158,22 +158,14 @@ class Index extends Component {
     })
     wgwImglist()
       .then(banners => {
-        // console.log(banners)
         this.setState({
           banners
         })
+        return indexInit()
       })
-    // searchIndexNewXinShou()
-    //   .then(data => {
-    //     this.setState({
-    //       product: data.product
-    //     })
-    //   })
-    indexInit()
       .then(res => {
         if (res.flag) {
           const flag = parseInt(res.flag, 10)
-          // const flag = 1
           const { api, data } = getProductOption(flag)
           api({
 						mPageNow : 1,
@@ -204,22 +196,13 @@ class Index extends Component {
         refreshing={ refreshing }
         distanceToRefresh={ 40 }
         onRefresh={() => this.refresh()}
-        onScroll={(e) => console.log(e)}
       >
         <Carousel dots={false} className="IndexBanner">
-          { banners.map(item => <img src={imgPrefix+item.mediaId} key={item.mediaId}/>) }
+          { banners.map(item => <img src={imgPrefix+item.mediaId} key={item.mediaId} alt=""/>) }
         </Carousel>
         <IndexGrid />
         <WhiteSpace />
         <IndexProduct data={product}/>
-        <h1>123123</h1>
-        <h1>123123</h1>
-        <h1>123123</h1>
-        <h1>123123</h1>
-        <h1>123123</h1>
-        <h1>123123</h1>
-        <h1>123123</h1>
-        <h1>123123</h1>
       </PullToRefresh>
     )
   }
