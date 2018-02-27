@@ -19,7 +19,6 @@ let navBarData = [
 class Home extends PureComponent {
   render() {
     const { pathname } = this.props.location
-    let selected = navBarData.find(item => pathname === item.path)
     return (
       <div className="homeContainer">
         <NavBar
@@ -31,21 +30,9 @@ class Home extends PureComponent {
             </div>
           }
         />
-        {
-          // navBarData.map(item =>{
-            // return item.rended ? (
-              <div className="refreshContainer">
-              {
-                selected.component
-                ? <selected.component />
-                : selected.title
-              }
-            </div>
-            // ) : null
-          // })
-        }
         <TabBar
-          tintColor="#ee735c"
+          tintColor="#ff6000"
+          prerenderingSiblingsNumber={false}
         >
           {
             navBarData.map(item => <TabBar.Item
@@ -56,7 +43,7 @@ class Home extends PureComponent {
               selected={pathname === item.path}
               onPress={() => this.props.history.push(item.path)}
             >
-              {/* { item.component ? <item.component /> : item.title } */}
+              { item.component ? <item.component /> : item.title }
             </TabBar.Item>)
           }
         </TabBar>
