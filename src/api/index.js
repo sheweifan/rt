@@ -1,13 +1,15 @@
 import axios from 'axios'
 
 const post = (url, data = {}) => {
-  // return axios.post(url, data)
+  // return axios.post(url, data, {
+  //   'Content-type': 'application/x-www-form-urlencoded'
+  // })
   return axios({
-    method:"post",
+    method: 'post',
     url,
     data,
-    headers:{
-      'Content-type': 'application/x-www-form-urlencoded'
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
     },
     transformRequest: [function (data) {
       let ret = ''
