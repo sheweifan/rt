@@ -1,0 +1,51 @@
+@import '../../stylus/index.styl'
+.productItem
+  background: #ffffff
+
+.productItemHead
+  $w= 24px
+  position: relative
+  display: flex
+  height: 42px
+  padding-right: 10px
+  align-items: center
+  &:before
+    sethalfborderbottom()
+  .tag
+    width: $w
+    height: $w
+    line-height: $w
+    text-align: center
+    background: $color
+    margin: 0 10px
+    border-radius: 50%
+    color: #ffffff
+  .title
+    flex: 1
+    font-size: 16px
+    ellipsisLn(1)
+
+.productItemContent
+  .content,
+  .message
+    width: 80%
+    display: flex
+    li
+      flex: 1
+      text-align: center
+  .content
+    .percent
+      font-size: 12px
+      line-height: 36px
+      color: $color
+      span
+        font-size: 36px
+    .desc
+      font-size: 12px
+      margin-top: -5px
+      color: #ccc
+  .message
+    padding-top: 6px
+    font-size: 12px
+    line-height: 1.5
+    color: #999
