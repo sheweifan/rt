@@ -1,6 +1,16 @@
 @import '../../stylus/index.styl'
+.homeContainer
+  height: 100vh
+  .am-tab-bar
+    height: calc(100vh - 45px)
+  .am-tabs-pane-wrap
+    height: calc(100vh - 45px - 50px)
+    // height: 100%
+    overflow: hidden
+
 .refreshContainer
-  height: calc(100vh - 45px - 50px)
+  height: 100%
+  // height: calc(100vh - 45px - 50px)
  .am-pull-to-refresh-content,
  .am-pull-to-refresh-content-wrapper
     min-height: 100%
