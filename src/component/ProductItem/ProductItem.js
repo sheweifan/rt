@@ -5,7 +5,7 @@ import './ProductItem.styl'
 
 class ProductItem extends PureComponent {
   render() {
-    const { productName, moneynow, loanDays, pagerate } = this.props
+    const { productName, moneynow, loanDays, pagerate, jinDu } = this.props
     return (
       <WingBlank size="md">
         <WhiteSpace />
@@ -31,7 +31,7 @@ class ProductItem extends PureComponent {
               <li>100元起投</li>
               <li>剩余可投{moneynow}元</li>
             </ul>
-            <CanvasCircleProgress />
+            <CanvasCircleProgress percent={jinDu}/>
             <WhiteSpace />
           </WingBlank>
         </div>
