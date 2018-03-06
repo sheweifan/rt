@@ -31,7 +31,7 @@ class ProductItem extends PureComponent {
               <li>100元起投</li>
               <li>剩余可投{moneynow}元</li>
             </ul>
-            <CanvasCircleProgress percent={jinDu}/>
+            <CanvasCircleProgress percent={jinDu} className="canvas"/>
             <WhiteSpace />
           </WingBlank>
         </div>
