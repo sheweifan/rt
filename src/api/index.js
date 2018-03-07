@@ -66,3 +66,19 @@ export const searchTiYanProduct = (params = {}) => {
       return Promise.resolve(res.data)
     })
 }
+
+export const searchProduct = (params = {}) => {
+  return post('/phoneHuaXingIndexController/searchProduct', params)
+    .then(res=> {
+      let { mList } = res.data
+      mList = mList.map(item => ({...item,type: 10}))
+      return Promise.resolve({...res.data, mList})
+    })
+}
+
+export const searchXinZhaiProduct = (params = {}) => {
+  return post('/phoneHuaXingIndexController/searchXinZhaiProduct', params)
+    .then(res=> {
+      return Promise.resolve(res.data)
+    })
+}
