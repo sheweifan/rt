@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Tabs } from 'antd-mobile'
 import List from 'component/List/List'
 import ProductItem from 'component/ProductItem/ProductItem'
-import { searchZhaiProduct } from 'api'
+import { searchZhaiProduct, searchProduct, searchXinZhaiProduct } from 'api'
 import './Product.styl'
 
 const tabs = [
@@ -14,40 +14,59 @@ const tabs = [
 class Product extends Component {
   constructor(props) {
     super(props)
-
+    this.state = {
+      tabActive: 0
+    }
     this.getData = this.getData.bind(this)
+    this.tabChange = this.tabChange.bind(this)
   }
-  getData(index, size) {
-    return searchZhaiProduct({
+  getData(index, size, fetch) {
+    return fetch({
       mPageNow: index,
       mPageSize: size,
       type: 0
     })
       .then(data => {
+        const { tabActive } = this.state
         const { mList, mPageCount, mPageNow } = data
+        if (mList[0].moneynow === 0 && index === 1) {
+          this.setState({
+            tabActive: tabActive + 1
+          })
+        }
         return Promise.resolve({list: mList, pageCount: mPageCount, pageNow: mPageNow})
       })
   }
+  tabChange(tab, tabActive) {
+    this.setState({
+      tabActive: tabActive
+    })
+  }
   render() {
+    const { tabActive } = this.state
     return (
       <div className="productContainer">
         <Tabs
-          tabs={tabs}
           useOnPan={false}
+          page={tabActive}
+          tabs={tabs}
           tabBarUnderlineStyle={{borderColor: '#ff6000'}}
           tabBarActiveTextColor="#ff6000"
           prerenderingSiblingsNumber={false}
+          onChange={this.tabChange}
         >
           <List
             renderRow={(item) => <ProductItem {...item} />}
-            getData={this.getData}
+            getData={(index, size) => this.getData(index, size, searchProduct)}
           />
-          <div>
-            Content of second tab
-          </div>
-          <div>
-            Content of third tab
-          </div>
+          <List
+            renderRow={(item) => <ProductItem {...item} />}
+            getData={(index, size) => this.getData(index, size, searchZhaiProduct)}
+          />
+          <List
+            renderRow={(item) => <ProductItem {...item} />}
+            getData={(index, size) => this.getData(index, size, searchXinZhaiProduct)}
+          />
         </Tabs>
       </div>
     )
