@@ -20,11 +20,11 @@ class Product extends Component {
     this.getData = this.getData.bind(this)
     this.tabChange = this.tabChange.bind(this)
   }
-  getData(index, size, fetch) {
+  getData(index, size, fetch, parmas={}) {
     return fetch({
       mPageNow: index,
       mPageSize: size,
-      type: 0
+      ...parmas
     })
       .then(data => {
         const { tabActive } = this.state
@@ -61,11 +61,11 @@ class Product extends Component {
           />
           <List
             renderRow={(item) => <ProductItem {...item} />}
-            getData={(index, size) => this.getData(index, size, searchZhaiProduct)}
+            getData={(index, size) => this.getData(index, size, searchZhaiProduct, {type: 0})}
           />
           <List
             renderRow={(item) => <ProductItem {...item} />}
-            getData={(index, size) => this.getData(index, size, searchXinZhaiProduct)}
+            getData={(index, size) => this.getData(index, size, searchXinZhaiProduct, {type: 1})}
           />
         </Tabs>
       </div>
