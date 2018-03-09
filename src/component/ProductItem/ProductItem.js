@@ -4,7 +4,7 @@ import CanvasCircleProgress from 'component/CanvasCircleProgress/CanvasCirclePro
 import './ProductItem.styl'
 
 
-const detailJinDu = (money,nowMoney) => {
+const detailJinDu = (money, nowMoney) => {
   const yitou = money-nowMoney
   let num = yitou/money*100
   if(num>0 && num<1){
@@ -33,7 +33,8 @@ class ProductItem extends PureComponent {
     const parseType = parseInt(type, 10)
     const way = ['等本等息', '先息后本', '等额本息'][parseInt(wayOfRepayment, 10)]
     const percent = type === 10 ? detailJinDu(productMoney, moneynow) : 0
-
+    const tag = parseType === 4 ? '债' : parseType === 5 ? '新' : '直'
+    loanDays = parseType === 5 ? 30 : loanDays
     const Bottom = () => {
       if (parseType === 4) {
         return (
@@ -58,14 +59,14 @@ class ProductItem extends PureComponent {
         <WhiteSpace />
         <div className={'productItem' + (moneynow===0 ? ' done' : '')}>
           <div className="productItemHead">
-            <div className="tag"><span>直</span></div>
+            <div className="tag"><span>{tag}</span></div>
             <div className="title">{productName}{productName}</div>
           </div>
           <WingBlank className="productItemContent" size="md">
             <WhiteSpace />
             <ul className="content">
               <li>
-                <p className="percent"><span>{pagerate}</span>%</p>
+                <p className="percent"><span>{parseFloat(pagerate)}</span>%</p>
                 <p className="desc">期待年回报率</p>
               </li>
               <li>
