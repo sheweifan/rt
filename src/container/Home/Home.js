@@ -32,6 +32,7 @@ class Home extends PureComponent {
           }
         />
         <TabBar
+          hidden={ navBarData.findIndex(item => item.path === pathname) === -1 }
           tintColor="#ff6000"
           prerenderingSiblingsNumber={false}
         >
