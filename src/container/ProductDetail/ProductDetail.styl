@@ -1,0 +1,44 @@
+@import '../../stylus/index.styl'
+
+.productDetailTop
+  background: #ffffff
+  padding: 10px
+  .name
+    font-size: 12px
+    line-height: 1.25
+    color: #333333
+  .nameTip
+    color: $color
+    line-height: 1.5
+    padding: 0 5px
+    margin-left: 5px
+    position: relative
+    display: inline-block
+    &:before
+      sethalfborder($color)
+      border-radius: 4px
+  .percentTitle
+    text-align: center
+    font-size: 12px
+    line-height: 2
+    color: #cccccc
+    padding: 20px 0 10px
+  .percent
+    text-align: center
+    font-size: 30px
+    line-height: 1.25
+    color: $color
+    span
+      font-size: 14px
+  .about
+    padding-top: 10px
+    display: flex
+    li
+      flex: 1
+      text-align: center
+      font-size: 12px
+      line-height: 1.5
+  .aboutTitle
+    color: #cccccc
+  .aboutDesc
+    color: #333
