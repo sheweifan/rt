@@ -82,3 +82,21 @@ export const searchXinZhaiProduct = (params = {}) => {
       return Promise.resolve(res.data)
     })
 }
+
+export const searchHuaxingzhaiProduct = (productId) => {
+  return post('/phoneHuaXingIndexController/searchHuaxingzhaiProduct', {
+    productId
+  })
+    .then(res=> {
+      return Promise.resolve(res.data)
+    })
+}
+
+export const searchHuaxingProduct = (productId) => {
+  return post('/phoneHuaXingIndexController/searchHuaxingProduct', {
+    productId
+  })
+    .then(res=> {
+      return Promise.resolve(res.data)
+    })
+}
