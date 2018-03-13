@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Tabs } from 'antd-mobile'
+import { withRouter } from 'react-router-dom'
 import List from 'component/List/List'
 import ProductItem from 'component/ProductItem/ProductItem'
 import { searchZhaiProduct, searchProduct, searchXinZhaiProduct } from 'api'
@@ -11,6 +12,7 @@ const tabs = [
   { title: '新手专享' }
 ]
 
+@withRouter
 class Product extends Component {
   constructor(props) {
     super(props)
@@ -19,6 +21,7 @@ class Product extends Component {
     }
     this.getData = this.getData.bind(this)
     this.tabChange = this.tabChange.bind(this)
+    this.runToDetail = this.runToDetail.bind(this)
   }
   getData(index, size, fetch, parmas={}) {
     return fetch({
@@ -42,6 +45,9 @@ class Product extends Component {
       tabActive: tabActive
     })
   }
+  runToDetail({productId}) {
+    this.props.history.push(`/product_detail/${productId}`)
+  }
   render() {
     const { tabActive } = this.state
     return (
@@ -56,15 +62,15 @@ class Product extends Component {
           onChange={this.tabChange}
         >
           <List
-            renderRow={(item) => <ProductItem {...item} />}
+            renderRow={(item) => <ProductItem {...item} onClick={() => { this.runToDetail(item) }}/>}
             getData={(index, size) => this.getData(index, size, searchProduct)}
           />
           <List
-            renderRow={(item) => <ProductItem {...item} />}
+            renderRow={(item) => <ProductItem {...item} onClick={() => { this.runToDetail(item) }}/>}
             getData={(index, size) => this.getData(index, size, searchZhaiProduct, {type: 0})}
           />
           <List
-            renderRow={(item) => <ProductItem {...item} />}
+            renderRow={(item) => <ProductItem {...item} onClick={() => { this.runToDetail(item) }}/>}
             getData={(index, size) => this.getData(index, size, searchXinZhaiProduct, {type: 1})}
           />
         </Tabs>
