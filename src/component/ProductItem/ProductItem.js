@@ -18,6 +18,9 @@ const detailJinDu = (money, nowMoney) => {
 }
 
 class ProductItem extends PureComponent {
+  static defaultProps = {
+    onClick: () => {}
+  }
   render() {
     let {
       productName,
@@ -27,7 +30,8 @@ class ProductItem extends PureComponent {
       productMonths,
       type,
       wayOfRepayment,
-      productMoney
+      productMoney,
+      onClick
     } = this.props
 
     const parseType = parseInt(type, 10)
@@ -57,7 +61,7 @@ class ProductItem extends PureComponent {
     return (
       <WingBlank size="md">
         <WhiteSpace />
-        <div className={'productItem' + (moneynow===0 ? ' done' : '')}>
+        <div className={'productItem' + (moneynow===0 ? ' done' : '')} onClick={onClick.bind(this)}>
           <div className="productItemHead">
             <div className="tag"><span>{tag}</span></div>
             <div className="title">{productName}{productName}</div>
