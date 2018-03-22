@@ -6,6 +6,7 @@ import './Home.styl'
 import Index from 'container/Index/Index'
 import Product from 'container/Product/Product'
 import Discover from 'container/Discover/Discover'
+import My from 'container/My/My'
 // import { connect } from 'react-redux'
 // import { update_userinfo } from 'action/user'
 
@@ -13,7 +14,7 @@ let navBarData = [
   {icon: 'star', title: '推荐', path: '/', component: Index},
   {icon: 'qiandaisel', title: '理财', path: '/product_list', component: Product},
   {icon: 'faxian', title: '发现', path: '/discover', component: Discover},
-  {icon: 'geren2', title: '我的', path: '/huaxmy'}
+  {icon: 'geren2', title: '我的', path: '/huaxmy', component: My}
 ]
 
 @withRouter
