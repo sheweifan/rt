@@ -1,9 +1,7 @@
+/* @flow */
 import axios from 'axios'
 
 const post = (url, data = {}) => {
-  // return axios.post(url, data, {
-  //   'Content-type': 'application/x-www-form-urlencoded'
-  // })
   return axios({
     method: 'post',
     url,
@@ -21,21 +19,21 @@ const post = (url, data = {}) => {
   })
 }
 
-export const wgwImglist = () => {
+export const wgwImglist = ():Function => {
   return post('/phoneindex/wgw_imglist')
     .then(res=>{
       return Promise.resolve(res.data)
     })
 }
 
-export const indexInit = () => {
+export const indexInit = ():Function => {
   return post('/phoneHuaXingIndexController/indexInit')
     .then(res=>{
       return Promise.resolve(res.data)
     })
 }
 
-export const searchIndexNewXinShou = (params = {}) => {
+export const searchIndexNewXinShou = (params: Object= {}):Function => {
   return post('/creditorController/searchIndexNewXinShou', params)
     .then(res=>{
       // const data = {...res.data, product: {...res.data.product, typeName: '新手专享', tag: '新', isXS: true}}
@@ -43,7 +41,7 @@ export const searchIndexNewXinShou = (params = {}) => {
     })
 }
 
-export const searchZhaiProduct = (params = {}) => {
+export const searchZhaiProduct = (params?: Object= {}):Function => {
   return post('/phoneHuaXingIndexController/searchZhaiProduct', params)
     .then(res=>{
       // const data = {...res.data, product: {...res.data.product, typeName: '债权转让', tag: '优'}}
@@ -51,7 +49,7 @@ export const searchZhaiProduct = (params = {}) => {
     })
 }
 
-export const searchProductIndexx = (params = {}) => {
+export const searchProductIndexx = (params?: Object= {}):Function => {
   return post('/phoneHuaXingIndexController/searchProductIndexx', params)
     .then(res=>{
       // const data = {...res.data, product: {...res.data.product, typeName: '直投项目', tag: '直'}}
@@ -59,7 +57,7 @@ export const searchProductIndexx = (params = {}) => {
     })
 }
 
-export const searchTiYanProduct = (params = {}) => {
+export const searchTiYanProduct = (params: Object= {}):Function => {
   return post('/phoneHuaXingIndexController/searchTiYanProduct', params)
     .then(res=> {
       // const data = {...res.data, product: {...res.data.product, typeName: '体验债权', tag: '体'}}
@@ -67,7 +65,7 @@ export const searchTiYanProduct = (params = {}) => {
     })
 }
 
-export const searchProduct = (params = {}) => {
+export const searchProduct = (params: Object= {}):Function => {
   return post('/phoneHuaXingIndexController/searchProduct', params)
     .then(res=> {
       let { mList } = res.data
@@ -76,14 +74,14 @@ export const searchProduct = (params = {}) => {
     })
 }
 
-export const searchXinZhaiProduct = (params = {}) => {
+export const searchXinZhaiProduct = (params: Object= {}):Function => {
   return post('/phoneHuaXingIndexController/searchXinZhaiProduct', params)
     .then(res=> {
       return Promise.resolve(res.data)
     })
 }
 
-export const searchHuaxingzhaiProduct = (productId) => {
+export const searchHuaxingzhaiProduct = (productId: string):Function => {
   return post('/phoneHuaXingIndexController/searchHuaxingzhaiProduct', {
     productId
   })
@@ -92,7 +90,7 @@ export const searchHuaxingzhaiProduct = (productId) => {
     })
 }
 
-export const searchHuaxingProduct = (productId) => {
+export const searchHuaxingProduct = (productId: string):Function => {
   return post('/phoneHuaXingIndexController/searchHuaxingProduct', {
     productId
   })
