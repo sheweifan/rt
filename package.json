@@ -20,7 +20,7 @@
     "eslint": "4.10.0",
     "eslint-config-react-app": "^2.1.0",
     "eslint-loader": "1.9.0",
-    "eslint-plugin-flowtype": "2.39.1",
+    "eslint-plugin-flowtype": "^2.46.1",
     "eslint-plugin-import": "2.8.0",
     "eslint-plugin-jsx-a11y": "5.1.1",
     "eslint-plugin-react": "7.4.0",
@@ -93,6 +93,7 @@
   },
   "babel": {
     "presets": [
+      "flow",
       "react-app"
     ],
     "plugins": [
@@ -107,11 +108,16 @@
     ]
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "react-app",
+    "plugins": [
+      "flowtype"
+    ]
   },
   "devDependencies": {
     "babel-plugin-import": "^1.6.5",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-flow": "^6.23.0",
+    "flow-bin": "^0.69.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1"
   },
