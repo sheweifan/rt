@@ -105,7 +105,8 @@
           "style": "css"
         }
       ]
-    ]
+    ],
+    "retainLines": true
   },
   "eslintConfig": {
     "extends": [
@@ -122,6 +123,7 @@
     "babel-preset-flow": "^6.23.0",
     "eslint-plugin-flowtype-errors": "^3.5.1",
     "flow-bin": "^0.69.0",
+    "flowtype-loader": "^0.2.2",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1"
   },
