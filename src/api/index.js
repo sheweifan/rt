@@ -1,7 +1,7 @@
 /* @flow */
 import axios from 'axios'
 
-const post = (url, data = {}) => {
+const post = (url: string, data?: Object = {}): Function => {
   return axios({
     method: 'post',
     url,
