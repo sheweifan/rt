@@ -1,14 +1,14 @@
+/* @flow */
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 
-var drawCircle = function(canvas,percent) {
+const drawCircle = function(canvas: HTMLCanvasElement, percent: number): void {
   const context = canvas.getContext('2d'),
   centerX = canvas.width/2,
   centerY = canvas.height/2,
   rad = Math.PI*2/100,
   lineW = canvas.width/10
 
-  function circle(n){
+  function circle(n:number): void {
       context.save()
       context.strokeStyle = "#ff5d3d"
       context.lineWidth = 3
@@ -19,7 +19,7 @@ var drawCircle = function(canvas,percent) {
       context.restore()
   }
 
-  function bgCircle(){
+  function bgCircle(): void {
       context.save()
       context.beginPath()
       context.strokeStyle = "#ebebeb"
@@ -30,7 +30,7 @@ var drawCircle = function(canvas,percent) {
       context.restore()
   }
 
-  function font() {
+  function font(): void {
     const fontSize = canvas.width/4
     context.fillStyle = '#ff5d3d'
     context.textAlign = 'center'
@@ -49,22 +49,26 @@ var drawCircle = function(canvas,percent) {
   draw()
 }
 
-class CanvasCircleProgress extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-    size: PropTypes.number,
-    percent: PropTypes.number.isRequired
-  }
+type propType = {
+  className: string,
+  size: number,
+  percent: number
+}
+
+class CanvasCircleProgress extends Component <propType, any> {
+  canvas: ?HTMLCanvasElement
   static defaultProps = {
     size: 60,
     className: ''
   }
   componentDidMount() {
     const { size, percent } = this.props
-    const canvas = this.canvas
-    canvas.width = size
-    canvas.height = size
-    drawCircle(canvas, percent)
+    let canvas = this.canvas
+    if (canvas) {
+      canvas.width = size
+      canvas.height = size
+      drawCircle(canvas, percent)
+    }
   }
   render() {
     return (
