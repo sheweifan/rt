@@ -1,18 +1,17 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+/* @flow */
+import * as React from 'react'
 import { NavBar, Icon } from 'antd-mobile'
 import './InnerContainer.styl'
 
-class InnerContainer extends Component {
-  static propTypes = {
-    title: PropTypes.string,
-    renderFooter: PropTypes.oneOfType([
-      PropTypes.func,
-      PropTypes.element
-    ]),
-    hidden: PropTypes.bool,
-    navBarConfig: PropTypes.object
-  }
+type propType = {
+  hidden?: boolean,
+  renderFooter?: React.Node | Function,
+  navBarConfig?: Object,
+  title: string,
+  children: React.Node
+}
+
+class InnerContainer extends React.Component <propType, any> {
   static defaultProps = {
     hidden: false,
     renderFooter: null,
