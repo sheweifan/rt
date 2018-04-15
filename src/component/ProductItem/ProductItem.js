@@ -1,5 +1,5 @@
 /* @flow */
-import React, { PureComponent } from 'react'
+import * as React from 'react'
 import { WingBlank, WhiteSpace } from 'antd-mobile'
 import CanvasCircleProgress from 'component/CanvasCircleProgress/CanvasCircleProgress'
 import './ProductItem.styl'
@@ -17,7 +17,19 @@ const detailJinDu = (money: number, nowMoney: number): number => {
   return num
 }
 
-class ProductItem extends PureComponent {
+type propType = {
+  productName: string,
+  loanDays: string,
+  pagerate: number,
+  moneynow: number,
+  productMonths: number,
+  type: string | number,
+  wayOfRepayment: string | number,
+  productMoney: number,
+  onClick?: Function
+}
+
+class ProductItem extends React.PureComponent<propType, any> {
   static defaultProps = {
     onClick: () => {}
   }
@@ -39,7 +51,7 @@ class ProductItem extends PureComponent {
     const percent = type === 10 ? detailJinDu(productMoney, moneynow) : 0
     const tag = parseType === 4 ? '债' : parseType === 5 ? '新' : '直'
     loanDays = parseType === 5 ? 30 : loanDays
-    const Bottom = () => {
+    const Bottom = (): React.Node => {
       if (parseType === 4) {
         return (
           <ul className="message">
