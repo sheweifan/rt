@@ -1,10 +1,10 @@
+/* @flow */
 import React, { PureComponent } from 'react'
 import { WingBlank, WhiteSpace } from 'antd-mobile'
 import CanvasCircleProgress from 'component/CanvasCircleProgress/CanvasCircleProgress'
 import './ProductItem.styl'
 
-
-const detailJinDu = (money, nowMoney) => {
+const detailJinDu = (money: number, nowMoney: number): number => {
   const yitou = money-nowMoney
   let num = yitou/money*100
   if(num>0 && num<1){
