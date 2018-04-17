@@ -39,7 +39,7 @@ const drawCircle = function(canvas: HTMLCanvasElement, percent: number): void {
     context.fillText(`${percent}%`, centerX, centerY)
   }
 
-  function draw() {
+  function draw(): void {
     context.clearRect(0, 0, canvas.width, canvas.height)
     bgCircle()
     circle(percent)
