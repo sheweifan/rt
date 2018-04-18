@@ -46,7 +46,12 @@ class Home extends PureComponent {
               selected={pathname === item.path}
               onPress={() => this.props.history.push(item.path)}
             >
-              { item.component ? <item.component /> : item.title }
+              { item.path !== '/huaxmy'
+                ? <item.component />
+                : pathname === '/huaxmy'
+                ? <item.component />
+                : null
+              }
             </TabBar.Item>)
           }
         </TabBar>
