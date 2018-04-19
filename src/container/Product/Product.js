@@ -23,7 +23,7 @@ class Product extends Component {
     this.tabChange = this.tabChange.bind(this)
     this.runToDetail = this.runToDetail.bind(this)
   }
-  getData(index, size, fetch, parmas={}) {
+  getData(index, size, fetch, parmas={}, config) {
     return fetch({
       mPageNow: index,
       mPageSize: size,
@@ -32,7 +32,7 @@ class Product extends Component {
       .then(data => {
         const { tabActive } = this.state
         const { mList, mPageCount, mPageNow } = data
-        if (mList[0].moneynow === 0 && index === 1) {
+        if (!config.isRefresh && mList[0].moneynow === 0 && index === 1) {
           this.setState({
             tabActive: tabActive + 1
           })
@@ -63,15 +63,15 @@ class Product extends Component {
         >
           <List
             renderRow={(item) => <ProductItem {...item} onClick={() => { this.runToDetail(item) }}/>}
-            getData={(index, size) => this.getData(index, size, searchProduct)}
+            getData={(index, size, config) => this.getData(index, size, searchProduct, {}, config)}
           />
           <List
             renderRow={(item) => <ProductItem {...item} onClick={() => { this.runToDetail(item) }}/>}
-            getData={(index, size) => this.getData(index, size, searchZhaiProduct, {type: 0})}
+            getData={(index, size, config) => this.getData(index, size, searchZhaiProduct, {type: 0}, config)}
           />
           <List
             renderRow={(item) => <ProductItem {...item} onClick={() => { this.runToDetail(item) }}/>}
-            getData={(index, size) => this.getData(index, size, searchXinZhaiProduct, {type: 1})}
+            getData={(index, size, config) => this.getData(index, size, searchXinZhaiProduct, {type: 1}, config)}
           />
         </Tabs>
       </div>

@@ -11,6 +11,9 @@ class List extends Component {
     getData: PropTypes.func.isRequired,
     pageSize: PropTypes.number
   }
+  static defaultProps = {
+    pageSize: PAGESIZE
+  }
   constructor(props) {
     super(props)
     const dataSource = new ListView.DataSource({
@@ -27,12 +30,12 @@ class List extends Component {
     this.onEndReached = this.onEndReached.bind(this)
     this.onRefresh = this.onRefresh.bind(this)
   }
-  getData(pageIndex, pageSize= (this.props.pageSize || PAGESIZE) ) {
+  getData(pageIndex, pageSize = this.props.pageSize, config = {} ) {
     const { getData } = this.props
     this.setState({
       refreshing: true
     })
-    getData(pageIndex, pageSize)
+    getData(pageIndex, pageSize, config)
       .then(data => {
         const { list, pageCount, pageNow } = data
         this.pageNow = pageNow
@@ -53,7 +56,9 @@ class List extends Component {
   }
   onRefresh() {
     this.list = []
-    this.getData(1)
+    this.getData(1, this.props.pageSize, {
+      isRefresh: true
+    })
   }
   onEndReached() {
     const { loading, hasMore } = this.state
