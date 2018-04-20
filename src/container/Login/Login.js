@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom'
 import { createForm } from 'rc-form'
 import { List, InputItem, WhiteSpace, WingBlank, Button } from 'antd-mobile';
 import { connect } from 'react-redux'
@@ -20,6 +21,7 @@ const getError = (error = {}) => {
   state => ({ user: state.user })
 )
 @createForm()
+@withRouter
 class Login extends Component {
   submit = () => {
     this.props.form.validateFields((error, value) => {
@@ -31,11 +33,15 @@ class Login extends Component {
     })
   }
   render() {
+    const { history } = this.props
     const { getFieldProps, getFieldsError } = this.props.form
     const error = getError(getFieldsError(sortArr))
     return (
       <InnerContainer
         title="快速登陆"
+        navBarConfig={{
+          onLeftClick: history.goBack.bind(null, -1)
+        }}
       >
         <WingBlank size="lg">
           <WhiteSpace size="lg"/>
