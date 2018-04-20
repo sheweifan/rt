@@ -150,7 +150,7 @@ class ProductDetail extends Component {
   buy() {
   }
   render() {
-    const { match: {params: { id } }, history } = this.props
+    const { history } = this.props
     const { product } = this.state
     if (product == null) {
       return null
