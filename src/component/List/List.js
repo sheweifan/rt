@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import { PullToRefresh, ListView } from 'antd-mobile'
 import './List.styl'
 
 const PAGESIZE = 10
 
-class List extends Component {
-  static propTypes = {
-    renderRow: PropTypes.func.isRequired,
-    getData: PropTypes.func.isRequired,
-    pageSize: PropTypes.number
-  }
+type propsType = {
+  renderRow: Function,
+  getData: Function,
+  pageSize?: Number
+}
+
+class List extends Component<propsType, any>{
   static defaultProps = {
     pageSize: PAGESIZE
   }
@@ -30,7 +30,7 @@ class List extends Component {
     this.onEndReached = this.onEndReached.bind(this)
     this.onRefresh = this.onRefresh.bind(this)
   }
-  getData(pageIndex, pageSize = this.props.pageSize, config = {} ) {
+  getData(pageIndex: Number, pageSize: Number = this.props.pageSize, config: Object = {} ) {
     const { getData } = this.props
     this.setState({
       refreshing: true
