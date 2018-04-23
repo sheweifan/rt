@@ -1,3 +1,4 @@
+/* @flow */
 import React, { Component } from 'react'
 import { PullToRefresh, ListView } from 'antd-mobile'
 import './List.styl'
@@ -11,6 +12,12 @@ type propsType = {
 }
 
 class List extends Component<propsType, any>{
+  onEndReached: Function;
+  onRefresh: Function;
+  pageNow: Number;
+  pageCount: Number;
+  list: Array;
+
   static defaultProps = {
     pageSize: PAGESIZE
   }
@@ -30,7 +37,7 @@ class List extends Component<propsType, any>{
     this.onEndReached = this.onEndReached.bind(this)
     this.onRefresh = this.onRefresh.bind(this)
   }
-  getData(pageIndex: Number, pageSize: Number = this.props.pageSize, config: Object = {} ) {
+  getData(pageIndex: Number, pageSize: Number = this.props.pageSize, config: Object = {} ) : void {
     const { getData } = this.props
     this.setState({
       refreshing: true
