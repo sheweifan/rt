@@ -16,13 +16,13 @@ class List extends Component<propsType, any>{
   onRefresh: Function;
   pageNow: Number;
   pageCount: Number;
-  list: Array;
+  list: Array<Object>;
 
   static defaultProps = {
     pageSize: PAGESIZE
   }
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
     const dataSource = new ListView.DataSource({
       rowHasChanged: (row1, row2) => row1 !== row2,
     })
@@ -37,7 +37,7 @@ class List extends Component<propsType, any>{
     this.onEndReached = this.onEndReached.bind(this)
     this.onRefresh = this.onRefresh.bind(this)
   }
-  getData(pageIndex: Number, pageSize: Number = this.props.pageSize, config: Object = {} ) : void {
+  getData(pageIndex: Number, pageSize?: Number = this.props.pageSize, config: Object = {} ) : void {
     const { getData } = this.props
     this.setState({
       refreshing: true
@@ -51,7 +51,7 @@ class List extends Component<propsType, any>{
         const hasMore = pageNow < pageCount
 
         this.setState({
-          dataSource:  this.state.dataSource.cloneWithRows(this.list),
+          dataSource: this.state.dataSource.cloneWithRows(this.list),
           refreshing: false,
           hasMore
         })
@@ -70,7 +70,7 @@ class List extends Component<propsType, any>{
   onEndReached() {
     const { loading, hasMore } = this.state
     if (loading && !hasMore) return
-    this.getData(this.pageNow+1)
+    this.getData(this.pageNow + 1)
   }
   render() {
     const { dataSource, refreshing, isLoading } = this.state
