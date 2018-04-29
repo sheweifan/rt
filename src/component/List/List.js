@@ -8,14 +8,14 @@ const PAGESIZE = 10
 type propsType = {
   renderRow: Function,
   getData: Function,
-  pageSize?: Number
+  pageSize: number
 }
 
 class List extends Component<propsType, any>{
   onEndReached: Function;
   onRefresh: Function;
-  pageNow: Number;
-  pageCount: Number;
+  pageNow: number;
+  pageCount: number;
   list: Array<Object>;
 
   static defaultProps = {
@@ -37,7 +37,7 @@ class List extends Component<propsType, any>{
     this.onEndReached = this.onEndReached.bind(this)
     this.onRefresh = this.onRefresh.bind(this)
   }
-  getData(pageIndex: Number, pageSize?: Number = this.props.pageSize, config: Object = {} ) : void {
+  getData(pageIndex: number, pageSize?: number = this.props.pageSize, config: Object = {} ) : void {
     const { getData } = this.props
     this.setState({
       refreshing: true
@@ -70,7 +70,7 @@ class List extends Component<propsType, any>{
   onEndReached() {
     const { loading, hasMore } = this.state
     if (loading && !hasMore) return
-    this.getData(this.pageNow + 1)
+    this.getData(this.pageNow+1)
   }
   render() {
     const { dataSource, refreshing, isLoading } = this.state
