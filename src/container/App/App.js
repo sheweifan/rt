@@ -1,12 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { BrowserRouter, Route } from 'react-router-dom'
 import Home from '../Home/Home'
 import ProductDetail from '../ProductDetail/ProductDetail'
 import Login from '../Login/Login'
 
-// import './App.css'
-
-class App extends Component {
+class App extends React.Component<any, any> {
   render() {
     return (
       <BrowserRouter>

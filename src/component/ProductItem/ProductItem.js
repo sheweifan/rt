@@ -1,7 +1,7 @@
 /* @flow */
 import * as React from 'react'
 import { WingBlank, WhiteSpace } from 'antd-mobile'
-import CanvasCircleProgress from 'component/CanvasCircleProgress/CanvasCircleProgress'
+import CanvasCircleProgress from '../CanvasCircleProgress/CanvasCircleProgress'
 import './ProductItem.styl'
 
 const detailJinDu = (money: number, nowMoney: number): number => {
