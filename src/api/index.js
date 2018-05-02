@@ -1,5 +1,6 @@
 /* @flow */
 import axios from 'axios'
+import md5 from 'js-md5'
 
 const post = (url: string, data?: Object = {}): Function => {
   return axios({
@@ -89,6 +90,18 @@ export const searchHuaxingzhaiProduct = (productId: string): Function => {
 export const searchHuaxingProduct = (productId: string): Function => {
   return post('/phoneHuaXingIndexController/searchHuaxingProduct', {
     productId
+  })
+    .then(res=> {
+      return Promise.resolve(res.data)
+    })
+}
+
+export const newLogin = (userName: string, pwd: string, ): Function => {
+  return post('/logincon/newLogin', {
+    userName,
+    pwd: md5(pwd),
+    source: 'WGW',
+    goto: null
   })
     .then(res=> {
       return Promise.resolve(res.data)
