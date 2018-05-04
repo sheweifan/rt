@@ -1,9 +1,12 @@
+/* @flow */
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import { createForm } from 'rc-form'
-import { List, InputItem, WhiteSpace, WingBlank, Button } from 'antd-mobile';
+import { List, InputItem, WhiteSpace, WingBlank, Button, Toast } from 'antd-mobile'
 import { connect } from 'react-redux'
-import InnerContainer from 'component/InnerContainer/InnerContainer'
+import { newLogin } from 'api'
+import InnerContainer from '../../component/InnerContainer/InnerContainer'
+import { update_userinfo } from 'action/user'
 import './Login.styl'
 
 const sortArr = ['phone', 'password']
@@ -18,7 +21,10 @@ const getError = (error = {}) => {
 }
 
 @connect(
-  state => ({ user: state.user })
+  state => ({ user: state.user }),
+  dispatch => ({
+    update: userinfo => dispatch(update_userinfo(userinfo))
+  })
 )
 @createForm()
 @withRouter
@@ -29,11 +35,25 @@ class Login extends Component {
         console.log('err', error)
       } else {
         console.log('val', value)
+        const { history, location } = this.props
+        newLogin(value.phone, value.password)
+          .then(data => {
+            if (data.msg === 'OK') {
+              this.props.update(data.u)
+              Toast.success('登录成功', 1, () => {
+                const { from } = location.state
+                history.replace(from || '/huaxmy')
+              })
+            } else {
+              Toast.fail('密码或帐号错误', 1)
+            }
+          })
       }
     })
   }
   render() {
     const { history } = this.props
+    console.log(this.props)
     const { getFieldProps, getFieldsError } = this.props.form
     const error = getError(getFieldsError(sortArr))
     return (
