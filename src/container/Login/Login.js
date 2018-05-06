@@ -28,16 +28,18 @@ const getError = (error = {}) => {
 )
 @createForm()
 @withRouter
-class Login extends Component {
+class Login extends Component<any, any> {
   submit = () => {
     this.props.form.validateFields((error, value) => {
       if (error) {
         console.log('err', error)
       } else {
         console.log('val', value)
+        Toast.loading('正在登录')
         const { history, location } = this.props
         newLogin(value.phone, value.password)
           .then(data => {
+            Toast.hide()
             if (data.msg === 'OK') {
               this.props.update(data.u)
               Toast.success('登录成功', 1, () => {
@@ -51,9 +53,13 @@ class Login extends Component {
       }
     })
   }
+  keyup(e: any) {
+    if (e.keyCode === 13) {
+      this.submit()
+    }
+  }
   render() {
     const { history } = this.props
-    console.log(this.props)
     const { getFieldProps, getFieldsError } = this.props.form
     const error = getError(getFieldsError(sortArr))
     return (
@@ -85,6 +91,7 @@ class Login extends Component {
                   {pattern: /^\w{6,16}$/, message: '密码只能是长度为6-16,字母、数字、下划线的组合'}
                 ],
               })}
+              onKeyUp={this.keyup.bind(this)}
               type="password"
               placeholder="请输入密码"
             />
