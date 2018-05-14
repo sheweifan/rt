@@ -2,14 +2,16 @@
 import axios from 'axios'
 import md5 from 'js-md5'
 
+
 const post = (url: string, data?: Object = {}): Function => {
   return axios({
     method: 'post',
-    url,
+    url: 'https://www.1-dt.com' + url,
     data,
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded'
     },
+    // withCredentials: true,
     transformRequest: [function (data) {
       let ret = ''
       for (let it in data) {
@@ -103,6 +105,20 @@ export const newLogin = (userName: string, pwd: string, ): Function => {
     source: 'WGW',
     goto: null
   })
+    .then(res=> {
+      return Promise.resolve(res.data)
+    })
+}
+
+export const myUser = (): Function => {
+  return post('/myusercenter/Myuser')
+    .then(res=> {
+      return Promise.resolve(res.data)
+    })
+}
+
+export const checkLogin = (): Function => {
+  return post('/phoneHuaXingIndexController/checkLogin')
     .then(res=> {
       return Promise.resolve(res.data)
     })
