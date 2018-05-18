@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Redirect, withRouter } from 'react-router-dom'
 import { connect, } from 'react-redux'
 import { myUser } from 'api'
+import MyTop from './subpage/MyTop'
 
 @connect(
   state => ({ user: state.user })
@@ -24,12 +25,7 @@ class My extends Component {
     }
     return (
       <div className="myContainer">
-        <div className="myContainerTop">
-          <div className="nameAndBill">
-            <span className="name">佘炜帆</span>
-            <span className="bill">账单</span>
-          </div>
-        </div>
+        <MyTop />
       </div>
     )
   }
