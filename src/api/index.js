@@ -117,9 +117,9 @@ export const myUser = (): Function => {
     })
 }
 
-export const checkLogin = (): Function => {
-  return post('/phoneHuaXingIndexController/checkLogin')
-    .then(res=> {
-      return Promise.resolve(res.data)
-    })
-}
+// export const checkLogin = (): Function => {
+//   return post('/phoneHuaXingIndexController/checkLogin')
+//     .then(res=> {
+//       return Promise.resolve(res.data)
+//     })
+// }
