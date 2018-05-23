@@ -3,6 +3,7 @@ import { Redirect, withRouter } from 'react-router-dom'
 import { connect, } from 'react-redux'
 import { myUser } from 'api'
 import MyTop from './subpage/MyTop'
+import MyList from './subpage/MyLinks'
 
 @connect(
   state => ({ user: state.user })
@@ -26,6 +27,7 @@ class My extends Component {
     return (
       <div className="myContainer">
         <MyTop />
+        <MyList />
       </div>
     )
   }
