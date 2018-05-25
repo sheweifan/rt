@@ -11,7 +11,7 @@ const post = (url: string, data?: Object = {}): Function => {
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded'
     },
-    // withCredentials: true,
+    withCredentials: true,
     transformRequest: [function (data) {
       let ret = ''
       for (let it in data) {
