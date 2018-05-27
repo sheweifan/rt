@@ -18,8 +18,19 @@ const dataList = [
 
 class MyLinks extends PureComponent {
   render() {
-    return(
+    return [
+      <div className="myMoney">
+        <div className="myMoneyItem">
+          <p className="title">累计投资</p>
+          <p className="text">112233</p>
+        </div>
+        <div className="myMoneyItem">
+          <p className="title">本月回款</p>
+          <p className="text">112233</p>
+        </div>
+      </div>,
       <List
+        key={2}
         className="myList"
       >
          {
@@ -34,7 +45,7 @@ class MyLinks extends PureComponent {
           ))
         }
       </List>
-    )
+    ]
   }
 }
 
