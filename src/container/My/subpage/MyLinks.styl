@@ -2,3 +2,18 @@
 
 .myList
   padding: $spacing
+
+.myMoney
+  margin: $spacing $spacing 0
+  background: #fff
+  display: flex
+  padding: $spacing 0
+.myMoneyItem
+  flex: 1
+  display: flex
+  justify-content: center
+  align-items: center
+  flex-direction: column
+  height: 80px
+  &:not(:nth-last-child(1))
+    border-right: 1px solid $borderColor
