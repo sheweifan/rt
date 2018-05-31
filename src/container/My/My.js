@@ -17,12 +17,12 @@ class My extends Component {
   }
   render() {
     if (this.props.user == null) {
-      // return <Redirect to={{
-      //   pathname: '/login',
-      //   state: {
-      //     from: '/huaxmy'
-      //   }
-      // }}/>
+      return <Redirect to={{
+        pathname: '/login',
+        state: {
+          from: '/huaxmy'
+        }
+      }}/>
     }
     return (
       <div className="myContainer">
