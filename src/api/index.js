@@ -6,7 +6,7 @@ import md5 from 'js-md5'
 const post = (url: string, data?: Object = {}): Function => {
   return axios({
     method: 'post',
-    url: 'https://www.1-dt.com' + url,
+    url: 'http://127.0.0.1:3000' + url,
     data,
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded'
@@ -122,4 +122,4 @@ export const myUser = (): Function => {
 //     .then(res=> {
 //       return Promise.resolve(res.data)
 //     })
-// }
+// // }
