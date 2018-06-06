@@ -7,7 +7,7 @@ type propType = {
   hidden?: boolean,
   renderFooter?: React.Node | Function,
   navBarConfig?: Object,
-  title: string,
+  title: string | React.Node,
   children: React.Node
 }
 
