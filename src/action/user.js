@@ -1,5 +1,6 @@
 // import units from '../units'
 import { myUser } from 'api'
+import { Promise } from 'es6-promise';
 export const UPDATE_USERINFO = 'UPDATE_USERINFO'
 
 export const update_userinfo = userinfo => {
@@ -7,7 +8,11 @@ export const update_userinfo = userinfo => {
   //   ...userinfo,
   //   __time__: +new Date()
   // })
-  return dispatch => {
+  return (dispatch, getState) => {
+    const { user } = getState()
+    if (user) {
+      return Promise.resolve()
+    }
     return myUser()
       .then(userinfo => dispatch({
         type: UPDATE_USERINFO,
