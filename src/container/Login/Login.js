@@ -43,7 +43,10 @@ class Login extends Component<any, any> {
             if (data.msg === 'OK') {
               this.props.update(data.u)
               Toast.success('登录成功', 1, () => {
-                const { from } = location.state
+                let from
+                if (location.state) {
+                  from = location.state.from
+                }
                 history.replace(from || '/huaxmy')
               })
             } else {
