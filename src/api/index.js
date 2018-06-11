@@ -117,6 +117,20 @@ export const myUser = (): Function => {
     })
 }
 
+export const myinvestment = (): Function => {
+  return post('/myusercenter/Myinvestment')
+    .then(res=> {
+      return Promise.resolve(res.data)
+    })
+}
+
+export const orderplanlistWX = (): Function => {
+  return post('/bankplan/orderplanlistWX')
+    .then(res=> {
+      return Promise.resolve(res.data)
+    })
+}
+
 // export const checkLogin = (): Function => {
 //   return post('/phoneHuaXingIndexController/checkLogin')
 //     .then(res=> {
