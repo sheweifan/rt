@@ -5,6 +5,7 @@ import { Toast } from 'antd-mobile'
 import MyTop from './subpage/MyTop'
 import MyList from './subpage/MyLinks'
 import { update_userinfo } from 'action/user'
+import './My.styl'
 
 @connect(
   state => ({ user: state.user }),
@@ -19,6 +20,8 @@ class My extends Component {
     this.state = {
       loading: true
     }
+
+    this.linkToInveset = this.linkToInveset.bind(this)
   }
   componentDidMount() {
     Toast.loading('loading...')
@@ -29,6 +32,9 @@ class My extends Component {
         })
         Toast.hide()
       })
+  }
+  linkToInveset() {
+    this.props.history.push('/invest')
   }
   render() {
     const { user } = this.props
@@ -47,7 +53,7 @@ class My extends Component {
     return (
       <div className="myContainer">
         <MyTop {...user}/>
-        <MyList {...user}/>
+        <MyList {...user} linkToInveset={this.linkToInveset}/>
       </div>
     )
   }
