@@ -23,8 +23,8 @@ class MyLinks extends PureComponent {
       sumMoney
     } = this.props
     return [
-      <div className="myMoney">
-        <div className="myMoneyItem">
+      <div className="myMoney" key={1}>
+        <div className="myMoneyItem" onClick={ this.props.linkToInveset }>
           <p className="title">累计投资</p>
           <p className="text">{sumMoney}</p>
         </div>
