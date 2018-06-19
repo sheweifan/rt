@@ -31,15 +31,26 @@ class Received extends React.Component {
       })
   }
   render() {
-    const { history } = this.props
+    const { history, user } = this.props
     return (
       <InnerContainer
       title={'回款计划'}
       navBarConfig={{
         onLeftClick: history.goBack.bind(null, -1)
       }}
+      hidden={true}
     >
-        <div >Received</div>
+        <div className="received">
+          <div className="receivedCountMessage">
+            <div className="all">
+              代收总额: <em className="high">{ user.daishou }</em> 元
+            </div>
+            <ul className="descs">
+              <li>散标待收 { user.daishouSanbiao } 元</li>
+              <li>优选待收 { user.daishouYoujihua } 元</li>
+            </ul>
+          </div>
+        </div>
       </InnerContainer>
     )
   }
