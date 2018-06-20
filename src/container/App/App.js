@@ -4,6 +4,7 @@ import Home from '../Home/Home'
 import ProductDetail from '../ProductDetail/ProductDetail'
 import Login from '../Login/Login'
 import Invest from '../Invest/Invest'
+import Received from '../Received/Received'
 
 class App extends React.Component<any, any> {
   render() {
@@ -14,6 +15,7 @@ class App extends React.Component<any, any> {
           <Route path="/product_detail/:id" component={ProductDetail}/>
           <Route path="/login" component={Login}/>
           <Route path="/invest" component={Invest}/>
+          <Route path="/received" component={Received}/>
         </div>
       </BrowserRouter>
     )
