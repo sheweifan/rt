@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom'
 import { update_userinfo } from 'action/user'
 import { Toast } from 'antd-mobile'
 import InnerContainer from 'component/InnerContainer/InnerContainer'
+import './Received.styl'
 
 @connect(
   state => ({ user: state.user }),
@@ -32,6 +33,7 @@ class Received extends React.Component {
   }
   render() {
     const { history, user } = this.props
+    if (!user) return null
     return (
       <InnerContainer
       title={'回款计划'}
