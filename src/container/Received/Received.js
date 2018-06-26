@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom'
 import { update_userinfo } from 'action/user'
 import { Toast } from 'antd-mobile'
 import InnerContainer from 'component/InnerContainer/InnerContainer'
+import ReceivedList from './subpage/ReceivedList'
 import './Received.styl'
 
 @connect(
@@ -52,6 +53,7 @@ class Received extends React.Component {
               <li>优选待收 { user.daishouYoujihua } 元</li>
             </ul>
           </div>
+          <ReceivedList />
         </div>
       </InnerContainer>
     )
