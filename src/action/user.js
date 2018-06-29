@@ -14,9 +14,11 @@ export const update_userinfo = userinfo => {
       return Promise.resolve()
     }
     return myUser()
-      .then(userinfo => dispatch({
-        type: UPDATE_USERINFO,
-        userinfo
-      }))
+      .then(data => {
+        dispatch({
+          type: UPDATE_USERINFO,
+          userinfo: Number(data.result) === 0 ? data : null
+        })
+      })
   }
 }
