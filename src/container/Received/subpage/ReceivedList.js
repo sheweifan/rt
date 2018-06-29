@@ -16,3 +16,5 @@ class ReceivedList extends React.Component {
     )
   }
 }
+
+export default ReceivedList
