@@ -1,0 +1,37 @@
+@import '../../../stylus/index.styl'
+
+.receivedList
+  margin: $spacing*2 $spacing $spacing
+  background-color: #fff
+
+.receivedListItem
+  border-bottom: 1px solid $borderColor
+  line-height: 2
+  font-size: 14px
+  position: relative
+  padding: $spacing $spacing*2 $spacing $spacing
+  display: flex
+  justify-content: space-between
+  .year
+    position: absolute
+    top:  -8px
+    font-size: 12px
+    line-height: 1.5
+    background-color: $color
+    color: #fff;
+    border-radius: 6 * 1.5px
+    left: $spacing
+    padding: 0 $spacing
+  .price
+    color: #999
+    font-size: 12px
+  &:after
+    position: absolute
+    width: 8px
+    height: 8px
+    border-right: 1px solid #999
+    border-top: 1px solid #999
+    content: ""
+    transform: translateY(-50%) rotate(45deg)
+    right: $spacing
+    top: 50%
