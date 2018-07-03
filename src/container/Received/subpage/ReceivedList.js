@@ -1,14 +1,16 @@
 import React from 'react'
+import './ReceivedList.styl'
+
 class ReceivedList extends React.Component {
   render() {
     return (
       <ul className="receivedList">
         {
-          Array(5).map(item => (
-            <li class="receivedListItem">
+          [1,1,1,1,1].map((item, index) => (
+            <li className="receivedListItem" key={index}>
               <span className="year">2018年</span>
-              <span classNmae="month">06月</span>
-              <span className="price">99</span>
+              <span className="month">06月</span>
+              <span className="price">¥99</span>
             </li>
           ))
         }
